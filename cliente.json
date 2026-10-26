@@ -1,0 +1,1149 @@
+{
+ "$schema": "./cliente.schema.json",
+ "id": "bien-etre-cafe",
+ "nombre": "Bien être café",
+ "pais": "AR",
+ "idioma": "es",
+ "modo": "demo",
+ "whatsapp": "5491100000000",
+ "prefijoPedido": "BE",
+ "supabase": {
+  "url": "",
+  "anonKey": ""
+ },
+ "marca": {
+  "logo": "img/logo.svg",
+  "logoPanel": "img/logo-claro.svg",
+  "favicon": "img/favicon.svg",
+  "colores": {
+   "fondo": "#EDEBDD",
+   "superficie": "#FBFAF5",
+   "texto": "#2B2A26",
+   "primario": "#AC3B2E",
+   "sobrePrimario": "#FBFAF5",
+   "acento": "#4A5A2A",
+   "sobreAcento": "#FBFAF5",
+   "borde": "#D9D4C2",
+   "suave": "#55524A"
+  },
+  "fuentes": {
+   "titulos": "'DM Serif Display', Georgia, serif",
+   "texto": "'Josefin Sans', system-ui, sans-serif",
+   "googleFonts": ""
+  },
+  "estilo": {
+   "forma": "pildora",
+   "sombra": "suave",
+   "borde": "1px",
+   "mayusculas": false
+  }
+ },
+ "modulos": {
+  "carta": true,
+  "carrito": true,
+  "reservas": false,
+  "admin": true
+ },
+ "horarios": {
+  "lun": [],
+  "mar": [
+   [
+    "08:00",
+    "21:00"
+   ]
+  ],
+  "mie": [
+   [
+    "08:00",
+    "21:00"
+   ]
+  ],
+  "jue": [
+   [
+    "08:00",
+    "21:00"
+   ]
+  ],
+  "vie": [
+   [
+    "08:00",
+    "21:00"
+   ]
+  ],
+  "sab": [
+   [
+    "08:00",
+    "21:00"
+   ]
+  ],
+  "dom": [
+   [
+    "08:00",
+    "21:00"
+   ]
+  ]
+ },
+ "pedidos": {
+  "salidas": [
+   "efectivo",
+   "mercadopago"
+  ],
+  "tipos": [
+   "retiro"
+  ],
+  "minimo": 0
+ },
+ "pagos": {
+  "mercadopago": {
+   "endpoint": "https://kit-demos-amf.vercel.app/api/mp-preference",
+   "modo": "sandbox"
+  },
+  "efectivo": {
+   "porDia": {
+    "mar": 20,
+    "mie": 20,
+    "jue": 20,
+    "vie": 20,
+    "sab": 15,
+    "dom": 15
+   },
+   "feriado": 15,
+   "feriados": [
+    "2026-12-08",
+    "2026-12-25",
+    "2027-01-01"
+   ]
+  }
+ },
+ "textos": {
+  "tuPedido": "Tu bandeja",
+  "verPedido": "Tu bandeja",
+  "agregar": "Sumar",
+  "carritoVacio": "Tu bandeja está vacía.",
+  "carritoVacioSub": "¿Un café? Elegí algo de la carta.",
+  "enviarPedido": "Confirmar pedido",
+  "pedidoListo": "¡Listo! Te esperamos en el jardín",
+  "pedidoListoSub": "Tu código es {codigo}. El local lo ve en su panel y te confirma por WhatsApp.",
+  "notaPedido": "¿A qué hora pasás a retirar? ¿Algo más?",
+  "retiro": "Retiro en Simbrón 3323",
+  "seguir": "Seguir mirando la carta"
+ },
+ "carta": {
+  "categorias": [
+   {
+    "id": "cafeteria",
+    "nombre": "Cafetería",
+    "orden": 1
+   },
+   {
+    "id": "cafe-frio",
+    "nombre": "Café frío",
+    "orden": 2
+   },
+   {
+    "id": "adicionales",
+    "nombre": "Adicionales",
+    "orden": 3
+   },
+   {
+    "id": "te",
+    "nombre": "Té Inti Zen",
+    "orden": 4
+   },
+   {
+    "id": "bebidas",
+    "nombre": "Bebidas",
+    "orden": 5
+   },
+   {
+    "id": "promos",
+    "nombre": "Desayunos y meriendas",
+    "orden": 6
+   },
+   {
+    "id": "cocina",
+    "nombre": "De cocina",
+    "orden": 7
+   },
+   {
+    "id": "laminados",
+    "nombre": "Laminados",
+    "orden": 8
+   },
+   {
+    "id": "pasteleria",
+    "nombre": "Pastelería",
+    "orden": 9
+   },
+   {
+    "id": "almuerzos",
+    "nombre": "Almuerzos",
+    "orden": 10
+   },
+   {
+    "id": "agenda",
+    "nombre": "Agenda",
+    "orden": 11
+   }
+  ],
+  "productos": [
+   {
+    "id": "espresso",
+    "categoria": "cafeteria",
+    "nombre": "Espresso",
+    "descripcion": "",
+    "precio": 4400,
+    "etiquetas": []
+   },
+   {
+    "id": "doppio",
+    "categoria": "cafeteria",
+    "nombre": "Doppio",
+    "descripcion": "Espresso doble",
+    "precio": 6200,
+    "etiquetas": []
+   },
+   {
+    "id": "cortado",
+    "categoria": "cafeteria",
+    "nombre": "Cortado",
+    "descripcion": "Espresso y leche",
+    "precio": 4800,
+    "etiquetas": []
+   },
+   {
+    "id": "americano-doble",
+    "categoria": "cafeteria",
+    "nombre": "Americano doble",
+    "descripcion": "Doble espresso y agua",
+    "precio": 6200,
+    "etiquetas": []
+   },
+   {
+    "id": "latte",
+    "categoria": "cafeteria",
+    "nombre": "Latte",
+    "descripcion": "Espresso y leche",
+    "precio": 6000,
+    "etiquetas": []
+   },
+   {
+    "id": "lagrima",
+    "categoria": "cafeteria",
+    "nombre": "Lágrima",
+    "descripcion": "",
+    "precio": 4800,
+    "etiquetas": []
+   },
+   {
+    "id": "magic",
+    "categoria": "cafeteria",
+    "nombre": "Magic",
+    "descripcion": "Doble shot de espresso y leche",
+    "precio": 6200,
+    "etiquetas": []
+   },
+   {
+    "id": "macchiato",
+    "categoria": "cafeteria",
+    "nombre": "Macchiato",
+    "descripcion": "Espresso y espuma de leche",
+    "precio": 6200,
+    "etiquetas": []
+   },
+   {
+    "id": "cafe-con-leche",
+    "categoria": "cafeteria",
+    "nombre": "Café con leche",
+    "descripcion": "Espresso y leche",
+    "precio": 6000,
+    "etiquetas": []
+   },
+   {
+    "id": "latte-saborizado",
+    "categoria": "cafeteria",
+    "nombre": "Latte saborizado",
+    "descripcion": "Vainilla o caramelo",
+    "precio": 7000,
+    "etiquetas": []
+   },
+   {
+    "id": "flat-white",
+    "categoria": "cafeteria",
+    "nombre": "Flat white",
+    "descripcion": "Espresso doble y leche",
+    "precio": 6200,
+    "etiquetas": []
+   },
+   {
+    "id": "capuccino",
+    "categoria": "cafeteria",
+    "nombre": "Capuccino",
+    "descripcion": "Espresso, cacao y leche con canela",
+    "precio": 6400,
+    "etiquetas": []
+   },
+   {
+    "id": "submarino-o-chocolatada",
+    "categoria": "cafeteria",
+    "nombre": "Submarino o chocolatada",
+    "descripcion": "",
+    "precio": 7200,
+    "etiquetas": []
+   },
+   {
+    "id": "mocca",
+    "categoria": "cafeteria",
+    "nombre": "Mocca",
+    "descripcion": "Espresso, leche y salsa mocca",
+    "precio": 7200,
+    "etiquetas": []
+   },
+   {
+    "id": "pistacho",
+    "categoria": "cafeteria",
+    "nombre": "Pistacho",
+    "descripcion": "",
+    "precio": 7200,
+    "etiquetas": [
+     "nuevo"
+    ]
+   },
+   {
+    "id": "lemon",
+    "categoria": "cafeteria",
+    "nombre": "Lemon",
+    "descripcion": "",
+    "precio": 7200,
+    "etiquetas": [
+     "nuevo"
+    ]
+   },
+   {
+    "id": "iced-latte",
+    "categoria": "cafe-frio",
+    "nombre": "Iced latte",
+    "descripcion": "",
+    "precio": 6200,
+    "etiquetas": []
+   },
+   {
+    "id": "flat-white-frio",
+    "categoria": "cafe-frio",
+    "nombre": "Flat white frío",
+    "descripcion": "",
+    "precio": 6600,
+    "etiquetas": []
+   },
+   {
+    "id": "americano-frio",
+    "categoria": "cafe-frio",
+    "nombre": "Americano frío",
+    "descripcion": "",
+    "precio": 6000,
+    "etiquetas": []
+   },
+   {
+    "id": "coffee-tonic",
+    "categoria": "cafe-frio",
+    "nombre": "Coffee tonic",
+    "descripcion": "Tónica con naranja o limón",
+    "precio": 7200,
+    "etiquetas": [],
+    "foto": "img/p-026-480.webp"
+   },
+   {
+    "id": "adicional-tazon",
+    "categoria": "adicionales",
+    "nombre": "Adicional tazón",
+    "descripcion": "",
+    "precio": 2600,
+    "etiquetas": []
+   },
+   {
+    "id": "adicional-leche-vegetal",
+    "categoria": "adicionales",
+    "nombre": "Adicional leche vegetal",
+    "descripcion": "",
+    "precio": 2000,
+    "etiquetas": []
+   },
+   {
+    "id": "vaso-de-leche",
+    "categoria": "adicionales",
+    "nombre": "Vaso de leche",
+    "descripcion": "",
+    "precio": 1800,
+    "etiquetas": []
+   },
+   {
+    "id": "extra-shot",
+    "categoria": "adicionales",
+    "nombre": "Extra shot",
+    "descripcion": "",
+    "precio": 2000,
+    "etiquetas": []
+   },
+   {
+    "id": "crema",
+    "categoria": "adicionales",
+    "nombre": "Crema",
+    "descripcion": "",
+    "precio": 2400,
+    "etiquetas": []
+   },
+   {
+    "id": "saborizante",
+    "categoria": "adicionales",
+    "nombre": "Saborizante",
+    "descripcion": "",
+    "precio": 2400,
+    "etiquetas": []
+   },
+   {
+    "id": "ilumine",
+    "categoria": "te",
+    "nombre": "Ilumine",
+    "descripcion": "Ceylon y assam",
+    "precio": 5000,
+    "etiquetas": []
+   },
+   {
+    "id": "amazonia-mango",
+    "categoria": "te",
+    "nombre": "Amazonia Mango",
+    "descripcion": "Mango y papaya",
+    "precio": 5000,
+    "etiquetas": []
+   },
+   {
+    "id": "inca-rose",
+    "categoria": "te",
+    "nombre": "Inca Rose",
+    "descripcion": "Ceylon, bergamota y pétalos de rosa",
+    "precio": 5000,
+    "etiquetas": []
+   },
+   {
+    "id": "silencio-andino",
+    "categoria": "te",
+    "nombre": "Silencio Andino",
+    "descripcion": "Té verde, cedrón y cáscaras de naranja",
+    "precio": 5000,
+    "etiquetas": []
+   },
+   {
+    "id": "golden-chai",
+    "categoria": "te",
+    "nombre": "Golden Chai",
+    "descripcion": "Té negro, cúrcuma, jengibre y canela",
+    "precio": 5000,
+    "etiquetas": []
+   },
+   {
+    "id": "patagonia-bee",
+    "categoria": "te",
+    "nombre": "Patagonia Bee",
+    "descripcion": "Miel, vainilla y cacao",
+    "precio": 5000,
+    "etiquetas": []
+   },
+   {
+    "id": "chaman-chai",
+    "categoria": "te",
+    "nombre": "Chaman Chai",
+    "descripcion": "Canela, jengibre y cardamomo",
+    "precio": 5000,
+    "etiquetas": []
+   },
+   {
+    "id": "patagonia-rooibos",
+    "categoria": "te",
+    "nombre": "Patagonia Rooibos",
+    "descripcion": "Frutos rojos de la Patagonia y rooibos",
+    "precio": 5000,
+    "etiquetas": []
+   },
+   {
+    "id": "agua-con-o-sin-gas",
+    "categoria": "bebidas",
+    "nombre": "Agua con o sin gas",
+    "descripcion": "",
+    "precio": 3600,
+    "etiquetas": []
+   },
+   {
+    "id": "gaseosa-linea-coca-cola",
+    "categoria": "bebidas",
+    "nombre": "Gaseosa línea Coca-Cola",
+    "descripcion": "",
+    "precio": 4200,
+    "etiquetas": []
+   },
+   {
+    "id": "jugo-de-naranja-natural",
+    "categoria": "bebidas",
+    "nombre": "Jugo de naranja natural",
+    "descripcion": "",
+    "precio": 5500,
+    "etiquetas": []
+   },
+   {
+    "id": "vaso-de-limonada",
+    "categoria": "bebidas",
+    "nombre": "Vaso de limonada",
+    "descripcion": "",
+    "precio": 5200,
+    "etiquetas": []
+   },
+   {
+    "id": "tonica",
+    "categoria": "bebidas",
+    "nombre": "Tónica",
+    "descripcion": "",
+    "precio": 4200,
+    "etiquetas": []
+   },
+   {
+    "id": "vermouth-martini",
+    "categoria": "bebidas",
+    "nombre": "Vermouth Martini",
+    "descripcion": "",
+    "precio": 8000,
+    "etiquetas": []
+   },
+   {
+    "id": "porron-de-cerveza",
+    "categoria": "bebidas",
+    "nombre": "Porrón de cerveza",
+    "descripcion": "",
+    "precio": 4900,
+    "etiquetas": []
+   },
+   {
+    "id": "copa-de-vino",
+    "categoria": "bebidas",
+    "nombre": "Copa de vino",
+    "descripcion": "Cordero con Piel de Lobo, Malbec (Mosquita Muerta, Mendoza)",
+    "precio": 5000,
+    "etiquetas": []
+   },
+   {
+    "id": "fernet",
+    "categoria": "bebidas",
+    "nombre": "Fernet",
+    "descripcion": "",
+    "precio": 7500,
+    "etiquetas": []
+   },
+   {
+    "id": "gin-tonic",
+    "categoria": "bebidas",
+    "nombre": "Gin tonic",
+    "descripcion": "",
+    "precio": 10000,
+    "etiquetas": []
+   },
+   {
+    "id": "clasico",
+    "categoria": "promos",
+    "nombre": "Clásico",
+    "descripcion": "2 medialunas o 2 chipá calientes. Con infusión caliente y jugo de naranja",
+    "precio": 10600,
+    "etiquetas": [
+     "salon"
+    ],
+    "foto": "img/p-039-480.webp"
+   },
+   {
+    "id": "porteno",
+    "categoria": "promos",
+    "nombre": "Porteño",
+    "descripcion": "Variedad de panes con queso crema y mermelada o manteca y dulce de leche. Con infusión y jugo",
+    "precio": 14200,
+    "etiquetas": [
+     "salon"
+    ]
+   },
+   {
+    "id": "avo-toast",
+    "categoria": "promos",
+    "nombre": "Avo toast",
+    "descripcion": "Tostón, huevo poché, palta, queso crema, tomate y mix de semillas. Con infusión y jugo",
+    "precio": 23400,
+    "etiquetas": [
+     "salon"
+    ]
+   },
+   {
+    "id": "bien-etre-amigos",
+    "categoria": "promos",
+    "nombre": "“Bien Être” amigos",
+    "descripcion": "Para 2: scon salado, 2 medialunas con JyQ, porción de budín, alfajor, tostadas con queso crema y mermelada y 2 infusiones",
+    "precio": 42200,
+    "etiquetas": [
+     "salon"
+    ]
+   },
+   {
+    "id": "huevo-revuelto-con-toston",
+    "categoria": "promos",
+    "nombre": "Huevo revuelto con tostón",
+    "descripcion": "Con infusión y jugo. Adicional palta $3.500",
+    "precio": 15000,
+    "etiquetas": [
+     "salon"
+    ]
+   },
+   {
+    "id": "saludable",
+    "categoria": "promos",
+    "nombre": "Saludable",
+    "descripcion": "Yogur natural, granola, frutas frescas y miel. Con infusión y jugo",
+    "precio": 21200,
+    "etiquetas": [
+     "salon"
+    ]
+   },
+   {
+    "id": "french",
+    "categoria": "promos",
+    "nombre": "French",
+    "descripcion": "Pan brioche, criolla de frutas, miel y queso especiado. Con infusión y jugo",
+    "precio": 22800,
+    "etiquetas": [
+     "salon"
+    ]
+   },
+   {
+    "id": "en-casa",
+    "categoria": "promos",
+    "nombre": "En casa",
+    "descripcion": "Mate y chipacitos sin TACC",
+    "precio": 24100,
+    "etiquetas": [
+     "salon",
+     "sintacc"
+    ]
+   },
+   {
+    "id": "tostadas",
+    "categoria": "cocina",
+    "nombre": "Tostadas",
+    "descripcion": "Con queso crema y mermelada o manteca y dulce de leche",
+    "precio": 8800,
+    "etiquetas": []
+   },
+   {
+    "id": "french-toast",
+    "categoria": "cocina",
+    "nombre": "French toast",
+    "descripcion": "Pan brioche, criolla de frutas, queso especiado y miel",
+    "precio": 17400,
+    "etiquetas": []
+   },
+   {
+    "id": "avocado",
+    "categoria": "cocina",
+    "nombre": "Avocado",
+    "descripcion": "Tostón, huevo poché, palta, queso crema, tomate cherry y mix de semillas",
+    "precio": 18000,
+    "etiquetas": [],
+    "foto": "img/p-028-480.webp"
+   },
+   {
+    "id": "avocado-veggie",
+    "categoria": "cocina",
+    "nombre": "Avocado veggie",
+    "descripcion": "Hummus, palta, rúcula, cherry y mix de semillas",
+    "precio": 18000,
+    "etiquetas": [
+     "veggie"
+    ]
+   },
+   {
+    "id": "bowl-de-yogurt",
+    "categoria": "cocina",
+    "nombre": "Bowl de yogurt",
+    "descripcion": "Frutas de estación, granola y miel",
+    "precio": 15700,
+    "etiquetas": []
+   },
+   {
+    "id": "huevos-revueltos",
+    "categoria": "cocina",
+    "nombre": "Huevos revueltos",
+    "descripcion": "",
+    "precio": 9400,
+    "etiquetas": []
+   },
+   {
+    "id": "prensado-de-chipa-jyq",
+    "categoria": "cocina",
+    "nombre": "Prensado de chipá JyQ",
+    "descripcion": "",
+    "precio": 16400,
+    "etiquetas": []
+   },
+   {
+    "id": "prensado-de-chipa-caprese",
+    "categoria": "cocina",
+    "nombre": "Prensado de chipá caprese",
+    "descripcion": "",
+    "precio": 16400,
+    "etiquetas": []
+   },
+   {
+    "id": "prensado-de-chipa-con-jamon-crudo",
+    "categoria": "cocina",
+    "nombre": "Prensado de chipá con jamón crudo",
+    "descripcion": "Crudo, rúcula, tomates asados y salsa de pepino",
+    "precio": 22000,
+    "etiquetas": []
+   },
+   {
+    "id": "toston-con-huevos-revueltos-palta-y-jamo",
+    "categoria": "cocina",
+    "nombre": "Tostón con huevos revueltos, palta y jamón",
+    "descripcion": "",
+    "precio": 15500,
+    "etiquetas": []
+   },
+   {
+    "id": "scon-de-jamon-y-queso",
+    "categoria": "cocina",
+    "nombre": "Scon de jamón y queso",
+    "descripcion": "",
+    "precio": 10800,
+    "etiquetas": []
+   },
+   {
+    "id": "scon-de-queso",
+    "categoria": "cocina",
+    "nombre": "Scon de queso",
+    "descripcion": "",
+    "precio": 5800,
+    "etiquetas": []
+   },
+   {
+    "id": "porcion-de-chipa-x3",
+    "categoria": "cocina",
+    "nombre": "Porción de chipá x3",
+    "descripcion": "",
+    "precio": 8800,
+    "etiquetas": []
+   },
+   {
+    "id": "croque-madame",
+    "categoria": "cocina",
+    "nombre": "Croque madame",
+    "descripcion": "Queso tybo, queso gouda, lomito, bechamel y huevo a la plancha",
+    "precio": 22800,
+    "etiquetas": []
+   },
+   {
+    "id": "prensado-de-brioche",
+    "categoria": "cocina",
+    "nombre": "Prensado de brioche",
+    "descripcion": "Con jamón cocido y queso tybo",
+    "precio": 17000,
+    "etiquetas": []
+   },
+   {
+    "id": "arabe-caprese",
+    "categoria": "cocina",
+    "nombre": "Árabe caprese",
+    "descripcion": "Queso tybo, tomate y albahaca",
+    "precio": 14000,
+    "etiquetas": []
+   },
+   {
+    "id": "arabe-de-jamon-y-queso",
+    "categoria": "cocina",
+    "nombre": "Árabe de jamón y queso",
+    "descripcion": "",
+    "precio": 14000,
+    "etiquetas": [
+     "sintacc"
+    ]
+   },
+   {
+    "id": "toston-de-salmon-ahumado",
+    "categoria": "cocina",
+    "nombre": "Tostón de salmón ahumado",
+    "descripcion": "Queso, rúcula, cebollas encurtidas y alcaparras",
+    "precio": 23900,
+    "etiquetas": []
+   },
+   {
+    "id": "mbeju",
+    "categoria": "cocina",
+    "nombre": "Mbeju",
+    "descripcion": "Tortilla de mandioca con queso, crema de palta y huevo a la plancha",
+    "precio": 17500,
+    "etiquetas": []
+   },
+   {
+    "id": "mbeju-solo",
+    "categoria": "cocina",
+    "nombre": "Mbeju solo",
+    "descripcion": "",
+    "precio": 8500,
+    "etiquetas": []
+   },
+   {
+    "id": "medialuna",
+    "categoria": "laminados",
+    "nombre": "Medialuna",
+    "descripcion": "",
+    "precio": 2500,
+    "etiquetas": []
+   },
+   {
+    "id": "2-medialunas-con-jamon-y-queso",
+    "categoria": "laminados",
+    "nombre": "2 medialunas con jamón y queso",
+    "descripcion": "",
+    "precio": 7200,
+    "etiquetas": []
+   },
+   {
+    "id": "medialuna-de-jamon-y-queso",
+    "categoria": "laminados",
+    "nombre": "Medialuna de jamón y queso",
+    "descripcion": "Jamón cocido y queso tybo",
+    "precio": 4200,
+    "etiquetas": []
+   },
+   {
+    "id": "croissant",
+    "categoria": "laminados",
+    "nombre": "Croissant",
+    "descripcion": "",
+    "precio": 4200,
+    "etiquetas": []
+   },
+   {
+    "id": "croissant-smash",
+    "categoria": "laminados",
+    "nombre": "Croissant smash",
+    "descripcion": "Dulce de leche, banana, frutos rojos y chips de banana",
+    "precio": 8800,
+    "etiquetas": [],
+    "foto": "img/p-035-480.webp"
+   },
+   {
+    "id": "croissant-jyq",
+    "categoria": "laminados",
+    "nombre": "Croissant JyQ",
+    "descripcion": "Jamón cocido y queso tybo",
+    "precio": 7400,
+    "etiquetas": []
+   },
+   {
+    "id": "roll-de-canela",
+    "categoria": "laminados",
+    "nombre": "Roll de canela",
+    "descripcion": "",
+    "precio": 5600,
+    "etiquetas": [],
+    "foto": "img/p-042-480.webp"
+   },
+   {
+    "id": "roll-de-frambuesa",
+    "categoria": "laminados",
+    "nombre": "Roll de frambuesa",
+    "descripcion": "",
+    "precio": 5600,
+    "etiquetas": []
+   },
+   {
+    "id": "pan-de-chocolate-o-manzana",
+    "categoria": "laminados",
+    "nombre": "Pan de chocolate o manzana",
+    "descripcion": "",
+    "precio": 6200,
+    "etiquetas": []
+   },
+   {
+    "id": "roll-de-pistacho",
+    "categoria": "laminados",
+    "nombre": "Roll de pistacho",
+    "descripcion": "",
+    "precio": 6300,
+    "etiquetas": []
+   },
+   {
+    "id": "budin-de-limon-marmolado-o-banana",
+    "categoria": "pasteleria",
+    "nombre": "Budín de limón, marmolado o banana",
+    "descripcion": "",
+    "precio": 7200,
+    "etiquetas": []
+   },
+   {
+    "id": "scon-dulce",
+    "categoria": "pasteleria",
+    "nombre": "Scon dulce",
+    "descripcion": "",
+    "precio": 5800,
+    "etiquetas": []
+   },
+   {
+    "id": "cuadrado-de-brownie",
+    "categoria": "pasteleria",
+    "nombre": "Cuadrado de brownie",
+    "descripcion": "",
+    "precio": 13200,
+    "etiquetas": [
+     "sintacc"
+    ]
+   },
+   {
+    "id": "alfajor-de-almendras-y-dulce-de-leche",
+    "categoria": "pasteleria",
+    "nombre": "Alfajor de almendras y dulce de leche",
+    "descripcion": "",
+    "precio": 8000,
+    "etiquetas": []
+   },
+   {
+    "id": "alfajor-sable-de-ddl-banado-en-chocolate",
+    "categoria": "pasteleria",
+    "nombre": "Alfajor sablé de DDL bañado en chocolate",
+    "descripcion": "",
+    "precio": 8000,
+    "etiquetas": [
+     "sintacc"
+    ],
+    "foto": "img/p-031-480.webp"
+   },
+   {
+    "id": "cheesecake-de-frutos-rojos",
+    "categoria": "pasteleria",
+    "nombre": "Cheesecake de frutos rojos",
+    "descripcion": "",
+    "precio": 14000,
+    "etiquetas": [
+     "sintacc"
+    ]
+   },
+   {
+    "id": "cheesecake-de-pistacho",
+    "categoria": "pasteleria",
+    "nombre": "Cheesecake de pistacho",
+    "descripcion": "",
+    "precio": 16500,
+    "etiquetas": [
+     "sintacc"
+    ],
+    "foto": "img/p-034-480.webp"
+   },
+   {
+    "id": "lemon-pie",
+    "categoria": "pasteleria",
+    "nombre": "Lemon pie",
+    "descripcion": "",
+    "precio": 14000,
+    "etiquetas": [
+     "sintacc"
+    ],
+    "foto": "img/p-045-480.webp"
+   },
+   {
+    "id": "lingote-de-chocolate-y-frambuesa",
+    "categoria": "pasteleria",
+    "nombre": "Lingote de chocolate y frambuesa",
+    "descripcion": "",
+    "precio": 14000,
+    "etiquetas": []
+   },
+   {
+    "id": "torta-de-banana-vainillas-crema-y-dulce",
+    "categoria": "pasteleria",
+    "nombre": "Torta de banana, vainillas, crema y dulce",
+    "descripcion": "",
+    "precio": 14000,
+    "etiquetas": []
+   },
+   {
+    "id": "cookie-chips-chocolate-o-red-velvet",
+    "categoria": "pasteleria",
+    "nombre": "Cookie (chips, chocolate o red velvet)",
+    "descripcion": "",
+    "precio": 5500,
+    "etiquetas": []
+   },
+   {
+    "id": "key-lime-pie",
+    "categoria": "pasteleria",
+    "nombre": "Key lime pie",
+    "descripcion": "",
+    "precio": 15500,
+    "etiquetas": []
+   },
+   {
+    "id": "chocotorta",
+    "categoria": "pasteleria",
+    "nombre": "Chocotorta",
+    "descripcion": "",
+    "precio": 12500,
+    "etiquetas": [
+     "sintacc"
+    ]
+   },
+   {
+    "id": "alm-menu-del-dia",
+    "categoria": "almuerzos",
+    "nombre": "Menú del día",
+    "descripcion": "Entrada, plato del día, bebida y café (té, espresso o cortado)",
+    "precio": 29000,
+    "etiquetas": [],
+    "disponible": false
+   },
+   {
+    "id": "alm-pollo-al-curry",
+    "categoria": "almuerzos",
+    "nombre": "Pollo al curry",
+    "descripcion": "Con ratatouille de verduras, salsa pomodoro y queso",
+    "precio": 25000,
+    "etiquetas": [],
+    "disponible": false
+   },
+   {
+    "id": "alm-risotto-de-pollo-o-veggie",
+    "categoria": "almuerzos",
+    "nombre": "Risotto de pollo o veggie",
+    "descripcion": "",
+    "precio": 25000,
+    "etiquetas": [],
+    "disponible": false
+   },
+   {
+    "id": "alm-goulash-de-ternera",
+    "categoria": "almuerzos",
+    "nombre": "Goulash de ternera",
+    "descripcion": "Zanahoria, arveja y spaetzle",
+    "precio": 27000,
+    "etiquetas": [],
+    "disponible": false
+   },
+   {
+    "id": "alm-sopa-del-dia",
+    "categoria": "almuerzos",
+    "nombre": "Sopa del día",
+    "descripcion": "",
+    "precio": 16000,
+    "etiquetas": [],
+    "disponible": false
+   },
+   {
+    "id": "alm-osobuco-con-cremoso-de-polenta",
+    "categoria": "almuerzos",
+    "nombre": "Osobuco con cremoso de polenta",
+    "descripcion": "",
+    "precio": 33000,
+    "etiquetas": [],
+    "disponible": false
+   },
+   {
+    "id": "alm-malfatti-de-espinaca-o-calabaza",
+    "categoria": "almuerzos",
+    "nombre": "Malfatti de espinaca o calabaza",
+    "descripcion": "Pastas caseras",
+    "precio": 20800,
+    "etiquetas": [
+     "veggie"
+    ],
+    "disponible": false
+   },
+   {
+    "id": "alm-noquis",
+    "categoria": "almuerzos",
+    "nombre": "Ñoquis",
+    "descripcion": "Pastas caseras. Consultar sabor",
+    "precio": 20800,
+    "etiquetas": [],
+    "disponible": false
+   },
+   {
+    "id": "alm-ensalada-veggie",
+    "categoria": "almuerzos",
+    "nombre": "Ensalada veggie",
+    "descripcion": "Mix de verdes, calabazas asadas, garbanzos crunchy, cherrys, choclo, ricota quemada y frutos secos",
+    "precio": 22000,
+    "etiquetas": [
+     "veggie"
+    ],
+    "disponible": false
+   },
+   {
+    "id": "alm-ensalada-fume",
+    "categoria": "almuerzos",
+    "nombre": "Ensalada fumé",
+    "descripcion": "Mix de hojas verdes, salmón ahumado, queso, tomate cherry confitado y vinagreta de cebolla",
+    "precio": 21000,
+    "etiquetas": [],
+    "disponible": false
+   },
+   {
+    "id": "alm-ensalada-caesar",
+    "categoria": "almuerzos",
+    "nombre": "Ensalada Caesar",
+    "descripcion": "Mix de hojas verdes, croutons, pollo o palta, queso rallado y aderezo Caesar (opción veggie)",
+    "precio": 19000,
+    "etiquetas": [],
+    "foto": "img/p-023-480.webp",
+    "disponible": false
+   },
+   {
+    "id": "alm-entre-panes-de-carne-desmechada",
+    "categoria": "almuerzos",
+    "nombre": "Entre panes de carne desmechada",
+    "descripcion": "Con queso gratinado. Con guarnición",
+    "precio": 24300,
+    "etiquetas": [],
+    "disponible": false
+   },
+   {
+    "id": "alm-entre-panes-de-pollo-con-salsa-caesar",
+    "categoria": "almuerzos",
+    "nombre": "Entre panes de pollo con salsa Caesar",
+    "descripcion": "Con guarnición",
+    "precio": 24300,
+    "etiquetas": [],
+    "disponible": false
+   },
+   {
+    "id": "alm-entre-panes-veggie",
+    "categoria": "almuerzos",
+    "nombre": "Entre panes veggie",
+    "descripcion": "Hummus, vegetales al horno y ricota. Con guarnición",
+    "precio": 24300,
+    "etiquetas": [
+     "veggie"
+    ],
+    "disponible": false
+   },
+   {
+    "id": "ev-proximo",
+    "categoria": "agenda",
+    "nombre": "[Nombre del próximo evento]",
+    "descripcion": "[Fecha y hora] — [Qué incluye, cupos y precio si tiene]",
+    "precio": null,
+    "etiquetas": []
+   },
+   {
+    "id": "ev-san-valentin",
+    "categoria": "agenda",
+    "nombre": "San Valentín con jazz en vivo",
+    "descripcion": "14 de febrero — Menú de 5 pasos: recepción, dos entradas para compartir, principal y postre, con sommelier y banda de jazz en vivo.",
+    "precio": null,
+    "etiquetas": [
+     "pasado"
+    ],
+    "foto": "img/barra-noche-700.webp"
+   }
+  ]
+ }
+}

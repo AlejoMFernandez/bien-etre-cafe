@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bien être café · El café escondido de Villa del Parque</title>
+<meta name="description" content="Un jardín con pileta, cascada y techos de madera a un pasaje de Simbrón 3323, Villa del Parque. Desayunos, meriendas y pastelería con opciones sin TACC. Martes a domingo de 8 a 21.">
+<meta name="theme-color" content="#EDEBDD">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bien être café">
+<meta property="og:title" content="Bien être café · El café escondido de Villa del Parque">
+<meta property="og:description" content="Un jardín con pileta y cascada a un pasaje de la calle. Carta, opciones sin TACC y pedidos para retirar.">
+<meta property="og:url" content="https://bien-etre-cafe.vercel.app/">
+<meta property="og:image" content="https://bien-etre-cafe.vercel.app/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="fonts/dmserif.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="fonts/josefin.woff" as="font" type="font/woff" crossorigin>
+<script>
+  (function () {
+    var d = document.documentElement;
+    d.classList.add('js');
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduce) d.classList.add('con-intro');
+  })();
+</script>
+<link rel="stylesheet" href="kit/kit.css?v=3">
+<link rel="stylesheet" href="css/style.css?v=1">
+</head>
+<body>
+
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="intro__in">
+    <svg class="intro__logo" viewBox="0 0 704 212" fill="none"><path pathLength="1" d="M10 200 V110 A90 90 0 0 1 190 110 V128 A72 72 0 0 0 334 128 V110 A90 90 0 0 1 514 110 V200 V110 A90 90 0 0 1 694 110 V200"/></svg>
+    <p class="intro__word"><span>b</span><span>i</span><span>e</span><span>n</span> <span>ê</span><span>t</span><span>r</span><span>e</span> <span>c</span><span>a</span><span>f</span><span>é</span></p>
+  </div>
+  <svg class="intro__onda" viewBox="0 0 1000 120" preserveAspectRatio="none"><path d="M0 0 H1000 V40 C1000 106 750 106 750 40 C750 106 500 106 500 40 C500 -26 250 -26 250 40 C250 106 0 106 0 40 Z"/></svg>
+</div>
+
+<a class="saltar" href="#carta">Ir a la carta</a>
+
+<header class="hdr" id="hdr">
+  <div class="hdr__in">
+    <a class="hdr__logo" href="#inicio" aria-label="Bien être café, inicio">
+      <img src="img/logo.svg" alt="" width="704" height="212">
+      <span class="hdr__word">bien être café</span>
+    </a>
+    <nav class="hdr__nav" aria-label="Secciones">
+      <a href="#carta">Carta</a><a href="#agenda">Agenda</a><a href="#jardin">El jardín</a><a href="#visitanos">Cómo llegar</a>
+    </nav>
+    <div class="hdr__acc">
+      <a class="btn btn--sm hdr__cta" href="#carta" data-ir-pedir>Pedir para retirar</a>
+      <a class="btn btn--sm hdr__carta" href="#carta">Carta</a>
+      <button class="hdr__menu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <nav aria-label="Menú">
+    <a href="#carta">Carta</a>
+    <a href="#pasaje">Cómo se llega</a>
+    <a href="#agenda">Agenda</a>
+    <a href="#jardin">El jardín</a>
+    <a href="#visitanos">Horarios y mapa</a>
+  </nav>
+  <p class="menu__pie">Simbrón 3323 · Villa del Parque<br>Martes a domingo de 8 a 21</p>
+</div>
+
+<main>
+
+<section class="hero" id="inicio" aria-label="Bien être café">
+  <div class="hero__foto">
+    <picture>
+      <source media="(min-width: 1100px)" srcset="img/hero-desk-900.webp 900w, img/hero-desk-1400.webp 1400w" sizes="52vw">
+      <img src="img/hero-celu-960.webp" srcset="img/hero-celu-640.webp 640w, img/hero-celu-960.webp 960w, img/hero-celu-1280.webp 1280w" sizes="100vw" width="960" height="1847" alt="La pileta con la cascada que cae del techo de madera, en el jardín de Bien être" fetchpriority="high" decoding="async" id="heroImg">
+    </picture>
+    <svg class="hero__onda" id="heroOnda" aria-hidden="true" preserveAspectRatio="none"><path class="hero__onda-fill"/><path class="hero__onda-linea"/></svg>
+  </div>
+  <div class="hero__txt">
+    <p class="chip chip--verde hero__chip" data-efectivo-chip><span data-efectivo-txt>Martes a domingo de 8 a 21</span></p>
+    <p class="hero__eyebrow"><span class="lin"><span>Simbrón 3323 · Villa del Parque</span></span></p>
+    <h1 class="hero__t"><span class="lin"><span>El café <em>escondido</em></span></span> <span class="lin"><span>de Villa del Parque</span></span></h1>
+    <p class="hero__p">Entrás por un pasaje de plantas y aparece un jardín con pileta, techos de madera y una barra roja. Desayunos, meriendas y pastelería, con opciones sin TACC.</p>
+    <div class="hero__btns">
+      <a class="btn" href="#carta">Ver la carta</a>
+      <a class="btn btn--linea hero__b2" href="#carta" data-ir-pedir>Pedir para retirar</a>
+      <a class="btn btn--linea hero__b3" href="#visitanos">Cómo llegar</a>
+    </div>
+    <ul class="hero__datos">
+      <li>Mar a dom · 8 a 21</li><li>No reservamos</li><li>Pet friendly afuera</li>
+    </ul>
+  </div>
+  <div class="hero__estado" data-estado aria-live="polite"><b data-estado-t>Martes a domingo</b><span data-estado-s>de 8 a 21</span></div>
+</section>
+
+<section class="pasaje" id="pasaje" aria-labelledby="pasajeT">
+  <div class="pasaje__pin">
+    <div class="pasaje__in">
+      <div class="pasaje__txt">
+        <p class="eyebrow">Cómo se llega</p>
+        <h2 class="h2" id="pasajeT">Un café que hay que <em>encontrar</em></h2>
+        <ol class="pasaje__pasos">
+          <li class="is-on"><b>01</b><span>Llegás a Simbrón 3323. Desde la vereda no se ve nada.</span></li>
+          <li><b>02</b><span>Seguís el pasaje verde, entre plantas que se cierran arriba como un túnel.</span></li>
+          <li><b>03</b><span>Y aparece el jardín: la pileta, la cascada y los techos que ondulan.</span></li>
+        </ol>
+        <a class="btn btn--linea pasaje__cta" href="#visitanos">Ver el mapa</a>
+      </div>
+      <div class="pasaje__marco">
+        <div class="pasaje__arco">
+          <img class="pasaje__img is-on" src="img/pasaje-1-700.webp" srcset="img/pasaje-1-700.webp 700w, img/pasaje-1-1100.webp 1100w" sizes="(min-width: 1100px) 480px, 80vw" width="700" height="875" alt="El cartel de la calle Vicente P. García entre plantas, en la entrada" loading="lazy" decoding="async">
+          <img class="pasaje__img" src="img/pasaje-2-640.webp" width="640" height="1066" alt="El pasaje de plantas que lleva al jardín" loading="lazy" decoding="async">
+          <img class="pasaje__img" src="img/pasaje-3-700.webp" srcset="img/pasaje-3-700.webp 700w, img/pasaje-3-1100.webp 1100w" sizes="(min-width: 1100px) 480px, 80vw" width="700" height="875" alt="El jardín con la pileta y los techos ondulados de madera" loading="lazy" decoding="async">
+        </div>
+        <div class="pasaje__barra" aria-hidden="true"><span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="carta-sec" id="carta" aria-labelledby="cartaT">
+  <div class="wrap">
+    <div class="carta-sec__head rv">
+      <div>
+        <p class="eyebrow">Para tomar acá o llevar</p>
+        <h2 class="h2" id="cartaT">La carta</h2>
+        <p class="carta-sec__sub">Pedí para retirar y pasá a buscarlo. <span class="carta-sec__ef" data-efectivo-carta></span></p>
+      </div>
+      <div class="carta-sec__ctrl">
+        <button class="switch" type="button" aria-pressed="false" id="swTacc">
+          <span class="switch__ico" aria-hidden="true"><svg viewBox="0 0 26 26"><circle cx="13" cy="13" r="11"/><path d="M13 6v14M13 9l-3-2M13 9l3-2M13 13l-3-2M13 13l3-2M13 17l-3-2M13 17l3-2"/><path d="M6 20L20 6"/></svg></span>
+          <span class="switch__t">Ver solo sin TACC</span>
+          <span class="switch__track" aria-hidden="true"><span></span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="carta" id="carta-app" aria-busy="true">
+      <div class="carta__tabs" role="tablist" aria-label="Secciones de la carta"></div>
+      <nav class="carta__indice" aria-label="Secciones de la carta"></nav>
+      <div class="carta__panel" id="cartaPanel" role="tabpanel" tabindex="-1"></div>
+      <aside class="carta__foto" aria-hidden="true"><div class="carta__foto-in"><img alt="" id="cartaFoto" width="800" height="800"><p class="carta__foto-t" id="cartaFotoT"></p></div></aside>
+    </div>
+    <p class="carta-sec__nota">Precios de la carta de junio. Para la versión sin TACC, avisanos al pedir.</p>
+  </div>
+</section>
+
+<section class="agenda" id="agenda" aria-labelledby="agendaT">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Agenda</p>
+      <h2 class="h2" id="agendaT">Lo que se viene <em>en el jardín</em></h2>
+      <p class="sec-head__p">Noches de jazz, menús especiales y días distintos. Lo anunciamos acá y en Instagram.</p>
+    </div>
+    <div class="agenda__lista" id="agendaLista" data-arrastre></div>
+  </div>
+</section>
+
+<section class="almuerzos" id="almuerzos" aria-labelledby="almT">
+  <div class="almuerzos__toldo" aria-hidden="true"></div>
+  <div class="wrap almuerzos__in">
+    <div class="rv">
+      <p class="almuerzos__pre">Próximamente</p>
+      <h2 class="almuerzos__t" id="almT">Almuerzos en el jardín</h2>
+    </div>
+    <div class="almuerzos__der rv">
+      <p>Cocina casera, pastas, ensaladas y entre panes. Muy pronto, al mediodía.</p>
+      <a class="btn btn--crema" href="https://www.instagram.com/bienetrecafe/" target="_blank" rel="noopener">Enterate en @bienetrecafe</a>
+    </div>
+  </div>
+</section>
+
+<section class="jardin" id="jardin" aria-labelledby="jardinT">
+  <div class="wrap">
+    <div class="sec-head sec-head--fila rv">
+      <div>
+        <p class="eyebrow">El jardín</p>
+        <h2 class="h2" id="jardinT">Te olvidás de que <em>estás en la ciudad</em></h2>
+      </div>
+      <p class="sec-head__p">Techos de madera que ondulan, una pileta con cascada, monsteras por todos lados y una barra roja que de noche se prende.</p>
+    </div>
+  </div>
+  <div class="jardin__galeria" data-arrastre tabindex="0" aria-label="Fotos del jardín">
+    <figure class="g g--a"><img src="img/g-020-600.webp" srcset="img/g-020-600.webp 600w, img/g-020-1000.webp 1000w" sizes="(min-width: 1100px) 30vw, 72vw" width="600" height="999" alt="Los techos ondulados sobre el salón de vidrio" loading="lazy" decoding="async"></figure>
+    <figure class="g g--b"><img src="img/g-024-600.webp" srcset="img/g-024-600.webp 600w, img/g-024-1000.webp 1000w" sizes="(min-width: 1100px) 26vw, 72vw" width="600" height="750" alt="Café y pastelería en una mesa frente a la pileta" loading="lazy" decoding="async"></figure>
+    <figure class="g g--c"><img src="img/g-017-600.webp" srcset="img/g-017-600.webp 600w, img/g-017-1000.webp 1000w" sizes="(min-width: 1100px) 22vw, 72vw" width="600" height="968" alt="La barra roja entre plantas" loading="lazy" decoding="async"></figure>
+    <figure class="g g--d"><img src="img/g-053-600.webp" srcset="img/g-053-600.webp 600w, img/g-053-1000.webp 1000w" sizes="(min-width: 1100px) 22vw, 72vw" width="600" height="749" alt="Detalle del techo de madera y el agua que cae" loading="lazy" decoding="async"></figure>
+    <figure class="g g--e"><img src="img/g-030-600.webp" srcset="img/g-030-600.webp 600w, img/g-030-1000.webp 1000w" sizes="(min-width: 1100px) 26vw, 72vw" width="600" height="800" alt="El jardín con bananeros y el salón al fondo" loading="lazy" decoding="async"></figure>
+    <figure class="g g--f"><img src="img/g-038-600.webp" srcset="img/g-038-600.webp 600w, img/g-038-1000.webp 1000w" sizes="(min-width: 1100px) 22vw, 72vw" width="600" height="1000" alt="La barra iluminada de noche, vista desde el patio" loading="lazy" decoding="async"></figure>
+    <figure class="g g--g"><img src="img/g-050-600.webp" srcset="img/g-050-600.webp 600w, img/g-050-1000.webp 1000w" sizes="(min-width: 1100px) 22vw, 72vw" width="600" height="750" alt="Hojas grandes de las plantas del jardín" loading="lazy" decoding="async"></figure>
+    <figure class="g g--h"><img src="img/g-046-600.webp" srcset="img/g-046-600.webp 600w, img/g-046-1000.webp 1000w" sizes="(min-width: 1100px) 22vw, 72vw" width="600" height="750" alt="El cartel redondo con el logo de Bien être café" loading="lazy" decoding="async"></figure>
+  </div>
+  <div class="jardin__ctrl wrap" aria-hidden="false">
+    <button class="flecha" type="button" data-gal="-1" aria-label="Foto anterior"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button class="flecha" type="button" data-gal="1" aria-label="Foto siguiente"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+</section>
+
+<section class="reglas" aria-labelledby="reglasT">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Para que sepas</p>
+      <h2 class="h2" id="reglasT">Las reglas <em>de la casa</em></h2>
+    </div>
+    <ul class="reglas__lista">
+      <li class="regla rv"><span class="regla__ico" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="5" y="8" width="22" height="19" rx="3"/><path d="M5 14h22M11 5v6M21 5v6M12 19l8 5M20 19l-8 5"/></svg></span><h3>No reservamos</h3><p>Vení cuando quieras: siempre hay un rincón en el jardín o en la barra.</p></li>
+      <li class="regla rv"><span class="regla__ico" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="9" cy="13" r="2.6"/><circle cx="14" cy="8.5" r="2.6"/><circle cx="20" cy="8.5" r="2.6"/><circle cx="25" cy="13" r="2.6"/><path d="M17 15c-4 0-7.5 5-7.5 8.5 0 2.5 2.4 3.5 4.3 2.7 2-.8 4.4-.8 6.4 0 1.9.8 4.3-.2 4.3-2.7C24.5 20 21 15 17 15Z"/></svg></span><h3>Pet friendly</h3><p>Tu perro es bienvenido en el exterior.</p></li>
+      <li class="regla rv"><span class="regla__ico" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="12"/><path d="M16 8v16M16 11.5l-3.4-2.3M16 11.5l3.4-2.3M16 16l-3.4-2.3M16 16l3.4-2.3M16 20.5l-3.4-2.3M16 20.5l3.4-2.3"/><path d="M7.5 24.5l17-17"/></svg></span><h3>Sin TACC y veggie</h3><p>Hay opciones marcadas en la carta. Avisanos que querés la versión sin TACC.</p></li>
+      <li class="regla rv"><span class="regla__ico" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="3.5" y="9" width="25" height="14" rx="2.5"/><circle cx="16" cy="16" r="3.6"/><path d="M8 13v6M24 13v6"/></svg></span><h3>Efectivo con descuento</h3><p>20% off de martes a viernes y 15% los fines de semana y feriados.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="visitanos" id="visitanos" aria-labelledby="visT">
+  <div class="wrap visitanos__in">
+    <div class="visitanos__txt rv">
+      <p class="eyebrow">Visitanos</p>
+      <h2 class="h2" id="visT">Simbrón <em>3323</em></h2>
+      <p class="visitanos__p">Villa del Parque, Ciudad de Buenos Aires. Buscá el pasaje de plantas: el jardín está al fondo.</p>
+      <div class="horario" data-horario>
+        <div class="horario__fila"><span>Martes a domingo</span><b>8 a 21</b></div>
+        <div class="horario__fila"><span>Lunes</span><b>Cerrado</b></div>
+        <p class="horario__estado" data-estado-largo></p>
+      </div>
+      <div class="visitanos__btns">
+        <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Bien+%C3%AAtre+caf%C3%A9+Simbr%C3%B3n+3323+Buenos+Aires" target="_blank" rel="noopener">Abrir en Google Maps</a>
+        <a class="btn btn--linea" href="https://www.instagram.com/bienetrecafe/" target="_blank" rel="noopener">@bienetrecafe</a>
+      </div>
+    </div>
+    <div class="visitanos__mapa rv">
+      <iframe title="Mapa: Simbrón 3323, Villa del Parque" data-src="https://www.google.com/maps?q=Simbr%C3%B3n%203323%2C%20Villa%20del%20Parque%2C%20Buenos%20Aires&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="pie">
+  <div class="wrap pie__in">
+    <div class="pie__marca">
+      <img src="img/logo-claro.svg" alt="" width="704" height="212">
+      <p class="pie__word">bien être café</p>
+      <p>Un café escondido en Villa del Parque.</p>
+    </div>
+    <nav class="pie__nav" aria-label="Pie">
+      <a href="#carta">Carta</a><a href="#agenda">Agenda</a><a href="#jardin">El jardín</a><a href="#visitanos">Cómo llegar</a>
+    </nav>
+    <div class="pie__datos">
+      <p>Simbrón 3323 · Villa del Parque</p>
+      <p>Martes a domingo de 8 a 21</p>
+      <p><a href="https://www.instagram.com/bienetrecafe/" target="_blank" rel="noopener">Instagram @bienetrecafe</a></p>
+    </div>
+  </div>
+  <p class="pie__credito wrap">Sitio desarrollado por <a href="https://alejomfernandez.com.ar" target="_blank" rel="noopener">Alejo Martín Fernández</a></p>
+</footer>
+
+<script src="js/main.js?v=1" defer></script>
+<script type="module">
+  import { initKit } from './kit/kit.js?v=3';
+  const BANDEJA = '<svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="11" rx="3"/><path d="M6.5 10.5h11"/></svg>';
+  try {
+    const kit = await initKit({
+      config: 'cliente.json',
+      carta: {},
+      carrito: { label: 'Tu bandeja', icono: BANDEJA },
+      badge: true,
+    });
+    window.__kit = kit;
+    document.dispatchEvent(new CustomEvent('be:kit', { detail: kit }));
+  } catch (err) {
+    console.error('[demo] kit', err);
+    document.dispatchEvent(new CustomEvent('be:kit-error'));
+  }
+</script>
+</body>
+</html>
