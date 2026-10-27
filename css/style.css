@@ -132,14 +132,15 @@ html.intro-lock, html.intro-lock body { overflow: hidden; }
 
 /* ---------- hero ---------- */
 .hero { position: relative; min-height: 100vh; min-height: 100svh; height: 100svh; max-height: 1100px; overflow: hidden; background: var(--pizarra); }
-.hero__foto { position: absolute; left: 0; right: 0; top: calc(var(--hdr) + env(safe-area-inset-top)); bottom: 0; overflow: hidden; }
-.hero__foto picture, .hero__foto img { position: absolute; inset: 0; width: 100%; height: 100%; }
-.hero__foto img { object-fit: cover; object-position: 50% 42%; transform-origin: 50% 60%; animation: respira 18s ease-in-out infinite; }
-.hero__foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(43, 42, 38, 0) 40%, rgba(43, 42, 38, .55) 62%, rgba(43, 42, 38, .86) 100%); pointer-events: none; }
-.hero__onda { position: absolute; left: 0; top: -1px; width: 100%; height: 160px; z-index: 2; overflow: visible; pointer-events: none; }
-.hero__onda-fill { fill: var(--pizarra); }
+.hero__foto { position: absolute; left: 0; right: 0; top: calc(var(--hdr) + env(safe-area-inset-top)); bottom: 0; }
+/* la onda recorta la foto misma (clip-path desde JS): no hay nada detrás que asome */
+.hero__clip { position: absolute; inset: 0; overflow: hidden; background: var(--pizarra); clip-path: inset(0); }
+.hero__clip picture { position: absolute; inset: -3%; }
+.hero__clip img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; transform-origin: 50% 60%; animation: respira 18s ease-in-out infinite; backface-visibility: hidden; }
+.hero__clip::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(43, 42, 38, 0) 40%, rgba(43, 42, 38, .55) 62%, rgba(43, 42, 38, .86) 100%); pointer-events: none; }
+.hero__onda { position: absolute; left: 0; top: 0; width: 100%; height: 160px; z-index: 2; overflow: visible; pointer-events: none; }
 .hero__onda-linea { fill: none; stroke: var(--barra); stroke-width: 3; stroke-linecap: round; }
-@keyframes respira { 0%, 100% { transform: scale(1.04) translate3d(0, 0, 0); } 50% { transform: scale(1.1) translate3d(-1.2%, -.8%, 0); } }
+@keyframes respira { 0%, 100% { transform: scale(1) translate3d(0, 0, 0); } 50% { transform: scale(1.05) translate3d(-.8%, -.6%, 0); } }
 
 .hero__txt { position: absolute; left: var(--pad); right: var(--pad); bottom: calc(28px + env(safe-area-inset-bottom)); z-index: 3; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; color: var(--calado); }
 .hero__chip { min-height: 37px; }
@@ -172,7 +173,7 @@ html.intro-lock, html.intro-lock body { overflow: hidden; }
 @media (min-width: 1100px) {
   .hero { height: 100vh; min-height: 680px; max-height: 1080px; }
   .hero__foto { left: auto; right: var(--pad); width: min(50vw, 760px); top: calc(var(--hdr) + 24px); }
-  .hero__foto::after { display: none; }
+  .hero__clip::after { display: none; }
   .hero__txt {
     left: max(var(--pad), calc((100vw - var(--max)) / 2)); right: auto; top: calc(var(--hdr) + 24px); bottom: 0; width: min(580px, calc(100vw - var(--pad) * 2 - min(50vw, 760px) - 56px));
     justify-content: center; gap: 24px; color: var(--tinta); padding-bottom: 40px;
@@ -206,9 +207,8 @@ html.intro-lock, html.intro-lock body { overflow: hidden; }
 /* entrada del hero (después de la intro) */
 .js .hero__chip, .js .hero__eyebrow, .js .hero__p, .js .hero__btns, .js .hero__datos, .js .hero__estado { opacity: 0; transform: translateY(14px); }
 .js .lin > span { transform: translateY(105%); }
-.js .hero__foto img { clip-path: inset(0 0 0 0); }
-.js .hero__foto { opacity: 0; transform: scale(1.03); }
-.hero.is-in .hero__foto { opacity: 1; transform: none; transition: opacity .9s var(--ease), transform 1.2s var(--ease); }
+.js .hero__foto { opacity: 0; }
+.hero.is-in .hero__foto { opacity: 1; transition: opacity .9s var(--ease); }
 .hero.is-in .lin > span { transform: none; transition: transform .9s var(--ease); transition-delay: calc(.12s + var(--d, 0) * 90ms); }
 .hero.is-in .hero__chip, .hero.is-in .hero__eyebrow, .hero.is-in .hero__p, .hero.is-in .hero__btns, .hero.is-in .hero__datos, .hero.is-in .hero__estado {
   opacity: 1; transform: none; transition: opacity .7s var(--ease), transform .7s var(--ease); transition-delay: calc(var(--d, 0) * 85ms);
@@ -217,32 +217,37 @@ html.intro-lock, html.intro-lock body { overflow: hidden; }
 .hdr.is-in { transform: none; }
 html:not(.js) .hdr { transform: none; }
 
-/* ---------- pasaje (WOW 1) ---------- */
-.pasaje { position: relative; height: 300vh; height: 300svh; background: var(--pizarra); }
-.pasaje__pin { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; display: flex; align-items: center; padding-top: var(--hdr); }
-.pasaje__in { width: 100%; max-width: calc(var(--max) + var(--pad) * 2); margin: 0 auto; padding: 0 var(--pad); display: grid; gap: 22px; align-content: center; height: 100%; padding-bottom: 20px; }
-.pasaje__txt { display: grid; gap: 12px; }
+/* ---------- pasaje (WOW 1): pasos con botones, sin trabar el scroll ---------- */
+.pasaje { padding: var(--aire) 0; }
+.pasaje__in { display: grid; gap: 36px; }
+.pasaje__txt { display: grid; gap: 18px; align-content: start; }
 .pasaje__txt .eyebrow { margin: 0; }
-.pasaje__txt .h2 { font-size: clamp(34px, 8.6vw, 88px); }
-.pasaje__pasos { list-style: none; margin: 0; padding: 0; position: relative; min-height: 76px; }
-.pasaje__pasos li { position: absolute; inset: 0 0 auto 0; display: flex; gap: 14px; align-items: baseline; font-size: 17px; line-height: 1.5; opacity: 0; transform: translateY(12px); transition: opacity .5s var(--ease), transform .5s var(--ease); }
-.pasaje__pasos li.is-on { opacity: 1; transform: none; }
-.pasaje__pasos b { font: 400 22px/1 var(--f-tit); color: var(--barra); flex-shrink: 0; }
-.pasaje__cta { display: none; }
-.pasaje__marco { position: relative; display: flex; flex-direction: column; align-items: center; gap: 14px; min-height: 0; }
-.pasaje__arco { position: relative; width: min(78vw, 360px); height: min(52svh, 480px); border-radius: 999px 999px 26px 26px; overflow: hidden; background: var(--linea); transform: scale(var(--s, .86)); transition: transform .1s linear; }
-.pasaje__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.12); transition: opacity .7s var(--ease), transform 1.4s var(--ease); }
+.pasaje__pasos { display: grid; gap: 6px; margin-top: 6px; }
+.paso {
+  display: flex; gap: 14px; align-items: baseline; width: 100%; padding: 14px 16px; border: 0; border-radius: 18px; background: transparent;
+  text-align: left; font-size: 17px; line-height: 1.5; color: var(--gris); cursor: pointer; touch-action: manipulation; transition: background .3s, color .3s;
+}
+.paso b { font: 400 24px/1 var(--f-tit); color: var(--linea); flex-shrink: 0; transition: color .3s; min-width: 30px; }
+.paso.is-on { background: var(--calado); color: var(--tinta); }
+.paso.is-on b { color: var(--barra); }
+@media (hover: hover) { .paso:not(.is-on):hover { background: rgba(251, 250, 245, .55); color: var(--tinta); } }
+.pasaje__cta { justify-self: start; display: none; }
+.pasaje__marco { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.pasaje__arco { position: relative; width: min(80vw, 380px); aspect-ratio: 4 / 5; border-radius: 999px 999px 26px 26px; overflow: hidden; background: var(--linea); touch-action: pan-y; user-select: none; }
+.pasaje__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.1); transition: opacity .7s var(--ease), transform 1.3s var(--ease); -webkit-user-drag: none; }
 .pasaje__img.is-on { opacity: 1; transform: scale(1); }
-.pasaje__barra { width: 120px; height: 3px; border-radius: 3px; background: var(--linea); overflow: hidden; }
-.pasaje__barra span { display: block; height: 100%; background: var(--barra); transform: scaleX(var(--p, 0)); transform-origin: left; }
+.pasaje__nav { display: flex; align-items: center; gap: 16px; }
+.pasaje__puntos { display: flex; gap: 8px; }
+.pasaje__puntos span { width: 8px; height: 8px; border-radius: 999px; background: var(--linea); transition: width .35s var(--ease), background .35s; }
+.pasaje__puntos span.is-on { width: 28px; background: var(--barra); }
+@media (min-width: 768px) { .pasaje__arco { width: min(60vw, 420px); } }
 @media (min-width: 1100px) {
-  .pasaje__in { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 64px; padding-bottom: 0; }
-  .pasaje__txt { gap: 26px; max-width: 520px; }
-  .pasaje__pasos { min-height: 96px; }
-  .pasaje__pasos li { font-size: 21px; }
-  .pasaje__pasos b { font-size: 30px; }
-  .pasaje__cta { display: inline-flex; justify-self: start; }
-  .pasaje__arco { width: min(36vw, 500px); height: min(72vh, 640px); }
+  .pasaje__in { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 72px; }
+  .pasaje__txt { gap: 24px; max-width: 540px; }
+  .paso { font-size: 19px; padding: 18px 20px; }
+  .paso b { font-size: 30px; min-width: 40px; }
+  .pasaje__cta { display: inline-flex; }
+  .pasaje__arco { width: min(36vw, 480px); }
 }
 
 /* ---------- carta ---------- */
@@ -511,7 +516,7 @@ html:not(.js) .hdr { transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .hero__foto img { animation: none; }
+  .hero__clip img { animation: none; }
   .js .rv, .js .pizarra, .js .g img, .js .lin > span, .js .hero__foto, .js .hero__chip, .js .hero__eyebrow, .js .hero__p, .js .hero__btns, .js .hero__datos, .js .hero__estado {
     opacity: 1 !important; transform: none !important; clip-path: none !important; transition: none !important;
   }
@@ -526,7 +531,7 @@ html:not(.js) .hdr { transform: none; }
   .hero__t { font-size: 32px; }
   .hero__txt { gap: 12px; bottom: 18px; max-width: 560px; }
   .hero__btns { width: auto; } .hero__btns .btn { flex: 0 0 auto; min-height: 46px; }
-  .pasaje__arco { height: 58svh; width: 240px; }
-  .pasaje__in { grid-template-columns: 1fr auto; align-items: center; }
-  .pasaje__txt .h2 { font-size: 30px; }
+  .pasaje__in { grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
+  .pasaje__marco { order: 0; }
+  .pasaje__arco { width: 240px; }
 }

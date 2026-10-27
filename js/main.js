@@ -98,18 +98,21 @@
   }
   arrancarIntro();
 
-  /* ================= hero: la onda del logo en tiempo real ================= */
-  var svg = $('#heroOnda'), fillP = svg && svg.querySelector('.hero__onda-fill'), lineP = svg && svg.querySelector('.hero__onda-linea');
-  var fotoBox = $('.hero__foto');
+  /* ================= hero: la onda del logo en tiempo real =================
+     La onda recorta la foto con clip-path (no hay una capa crema encima que pueda dejar ver los bordes de la foto)
+     y la línea roja del logo va en un SVG encima, siguiendo el mismo borde. */
+  var svg = $('#heroOnda'), lineP = svg && svg.querySelector('.hero__onda-linea');
+  var fotoBox = $('.hero__foto'), clipBox = $('#heroClip');
   var SIGNOS = [1, -1, 1, 1]; // ∩ ∪ ∩ ∩, como el logo
-  var W = 0, A = 0, B = 0, H = 0, corriendo = false, visible = true, boost = [0, 0, 0, 0], boostT = [0, 0, 0, 0], factorScroll = 1, punteroX = -1;
+  var W = 0, A = 0, B = 0, H = 0, HC = 0, corriendo = false, visible = true, boost = [0, 0, 0, 0], boostT = [0, 0, 0, 0], factorScroll = 1, factorT = 1;
   function medir() {
     if (!fotoBox) return;
-    W = fotoBox.clientWidth;
+    W = fotoBox.clientWidth; HC = fotoBox.clientHeight;
+    if (!W) return;
     var hw = W / 4;
     A = Math.min(hw * .44, 96);
-    B = Math.round(A + 12);
-    H = Math.ceil(B + A * 1.35 + 10);
+    B = Math.round(A * 1.3 + 8);
+    H = Math.ceil(B + A * 1.45 + 10);
     svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
     svg.style.height = H + 'px';
     dibujar(performance.now());
@@ -120,7 +123,7 @@
     xs.push(W);
     var amps = [];
     for (var i = 0; i < 4; i++) {
-      var vari = 1 + .13 * Math.sin(t * .00055 + i * 1.7) + .05 * Math.sin(t * .0013 + i * 2.9);
+      var vari = 1 + .12 * Math.sin(t * .00055 + i * 1.7) + .045 * Math.sin(t * .0013 + i * 2.9);
       amps.push(A * SIGNOS[i] * vari * factorScroll * (1 + boost[i]));
     }
     for (var j = 3; j >= 0; j--) {
@@ -132,17 +135,18 @@
   function dibujar(t) {
     if (!W) return;
     var c = curva(REDUCE ? 0 : t);
-    fillP.setAttribute('d', 'M-2 -2 H' + (W + 2) + ' V' + B + ' L' + W + ' ' + B + c + ' L-2 ' + B + ' Z');
+    clipBox.style.clipPath = 'path("M' + W + ' ' + B + c + ' L0 ' + (HC + 40) + ' L' + W + ' ' + (HC + 40) + ' Z")';
     lineP.setAttribute('d', 'M' + W + ' ' + B + c);
   }
   function loop(t) {
     if (!visible || document.hidden) { corriendo = false; return; }
+    factorScroll += (factorT - factorScroll) * .12;
     for (var i = 0; i < 4; i++) boost[i] += (boostT[i] - boost[i]) * .06;
     dibujar(t);
     requestAnimationFrame(loop);
   }
   function arrancarLoop() { if (REDUCE || corriendo) return; corriendo = true; requestAnimationFrame(loop); }
-  if (svg) {
+  if (svg && clipBox) {
     medir();
     if ('ResizeObserver' in window) new ResizeObserver(medir).observe(fotoBox); else window.addEventListener('resize', medir);
     if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; if (visible) arrancarLoop(); }).observe(hero);
@@ -150,43 +154,67 @@
     arrancarLoop();
     if (HOVER) {
       hero.addEventListener('pointermove', function (e) {
-        var r = fotoBox.getBoundingClientRect(); punteroX = e.clientX - r.left;
-        for (var i = 0; i < 4; i++) boostT[i] = (punteroX >= W * i / 4 && punteroX < W * (i + 1) / 4 && e.clientY < r.top + H * 1.4 && e.clientY > r.top - 40) ? .16 : 0;
+        var r = fotoBox.getBoundingClientRect(), x = e.clientX - r.left;
+        for (var i = 0; i < 4; i++) boostT[i] = (x >= W * i / 4 && x < W * (i + 1) / 4 && e.clientY < r.top + H * 1.3 && e.clientY > r.top - 40) ? .14 : 0;
       }, { passive: true });
       hero.addEventListener('pointerleave', function () { boostT = [0, 0, 0, 0]; });
     }
   }
 
   /* ================= header / scroll ================= */
-  var pasaje = $('#pasaje'), pasajeImgs = $$('.pasaje__img'), pasajePasos = $$('.pasaje__pasos li'), pasajeArco = $('.pasaje__arco'), pasajeBarra = $('.pasaje__barra'), pasoActual = 0;
   var tick = false;
   function onScroll() {
     if (tick) return; tick = true;
     requestAnimationFrame(function () {
       tick = false;
-      var y = window.scrollY, vh = window.innerHeight;
+      var y = window.scrollY;
       hdr.classList.toggle('is-sombra', y > 8);
       if (hero) html.classList.toggle('en-hero', y < hero.offsetHeight * .55);
-      if (hero) factorScroll = 1 - .35 * Math.min(1, Math.max(0, y / (hero.offsetHeight * .8)));
-      if (REDUCE && svg) dibujar(0);
-      if (pasaje) {
-        var top = pasaje.offsetTop, alto = pasaje.offsetHeight - vh;
-        var p = Math.min(1, Math.max(0, (y - top) / alto));
-        var paso = p < .34 ? 0 : p < .67 ? 1 : 2;
-        if (paso !== pasoActual) {
-          pasoActual = paso;
-          pasajeImgs.forEach(function (im, i) { im.classList.toggle('is-on', i === paso); });
-          pasajePasos.forEach(function (li, i) { li.classList.toggle('is-on', i === paso); });
-        }
-        if (pasajeArco && !REDUCE) pasajeArco.style.setProperty('--s', (.86 + .14 * p).toFixed(3));
-        if (pasajeBarra) pasajeBarra.style.setProperty('--p', p.toFixed(3));
-      }
+      if (hero) factorT = 1 - .3 * Math.min(1, Math.max(0, y / (hero.offsetHeight * .8)));
     });
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
-  // las fotos del pasaje: se cargan todas cuando el pasaje se acerca
-  if (pasaje && 'IntersectionObserver' in window) {
+
+  /* ================= cómo se llega: 3 pasos con botones (no traba el scroll) ================= */
+  var pasaje = $('#pasaje'), pasajeImgs = $$('.pasaje__img'), pasos = $$('.paso'), puntos = $$('.pasaje__puntos span'), arco = $('#pasajeArco');
+  var pasoActual = 0, auto = null, tocado = false;
+  function irPaso(n, manual) {
+    n = (n + 3) % 3;
+    if (manual) { tocado = true; pararAuto(); }
+    if (n === pasoActual) return;
+    pasoActual = n;
+    pasajeImgs.forEach(function (im, i) { im.classList.toggle('is-on', i === n); });
+    pasos.forEach(function (b, i) { b.classList.toggle('is-on', i === n); b.setAttribute('aria-selected', i === n); });
+    puntos.forEach(function (p, i) { p.classList.toggle('is-on', i === n); });
+  }
+  function pararAuto() { clearInterval(auto); auto = null; }
+  pasos.forEach(function (b) { b.addEventListener('click', function () { irPaso(+b.dataset.paso, true); }); });
+  $$('[data-paso-mov]').forEach(function (b) { b.addEventListener('click', function () { irPaso(pasoActual + Number(b.dataset.pasoMov), true); }); });
+  if (pasaje) {
+    pasaje.addEventListener('keydown', function (e) {
+      if (!e.target.classList.contains('paso') || ['ArrowDown', 'ArrowUp', 'ArrowRight', 'ArrowLeft'].indexOf(e.key) < 0) return;
+      e.preventDefault(); irPaso(pasoActual + (e.key === 'ArrowDown' || e.key === 'ArrowRight' ? 1 : -1), true); pasos[pasoActual].focus();
+    });
+  }
+  // deslizar la foto con el dedo o arrastrar con el mouse
+  if (arco) {
+    var sx = null, sy = 0;
+    arco.addEventListener('pointerdown', function (e) { sx = e.clientX; sy = e.clientY; });
+    arco.addEventListener('pointerup', function (e) {
+      if (sx === null) return;
+      var dx = e.clientX - sx, dy = e.clientY - sy; sx = null;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) irPaso(pasoActual + (dx < 0 ? 1 : -1), true);
+      else if (Math.abs(dx) < 8 && Math.abs(dy) < 8) irPaso(pasoActual + 1, true);
+    });
+    arco.addEventListener('pointercancel', function () { sx = null; });
+  }
+  // avanza solo mientras está a la vista, hasta que la persona toca algo
+  if (pasaje && !REDUCE && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting && !tocado) { if (!auto) auto = setInterval(function () { irPaso(pasoActual + 1); }, 4500); }
+      else pararAuto();
+    }, { threshold: .5 }).observe(pasaje);
     new IntersectionObserver(function (es, o) { if (es[0].isIntersecting) { pasajeImgs.forEach(function (i) { i.loading = 'eager'; }); o.disconnect(); } }, { rootMargin: '600px' }).observe(pasaje);
   }
 
