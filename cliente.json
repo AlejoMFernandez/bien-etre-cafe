@@ -2,6 +2,7 @@
  "$schema": "./cliente.schema.json",
  "id": "bien-etre-cafe",
  "nombre": "Bien être café",
+ "instagram": "bienetrecafe",
  "pais": "AR",
  "idioma": "es",
  "modo": "demo",
